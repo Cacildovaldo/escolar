@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escola Mestre — Sistema Completo de Gestão Pedagógica para Windows | Pagamento Único</title>
+<meta name="description" content="Organize alunos, professores, notas, horários e planejamentos com o Escola Mestre. 100% offline, leve, pagamento único e vitalício. Entrega imediata para Windows.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231e1b4b'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0f1230;--indigo:#312e81;--violet:#6d28d9;--amber:#fbbf24;--amber2:#f59e0b;
+  --green:#10b981;--bg:#f6f7ff;--card:#fff;--txt:#1e1b4b;--muted:#5b5b7a;
+  --radius:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+.topbar{background:linear-gradient(90deg,#f59e0b,#ef4444,#7c3aed);color:#fff;text-align:center;font-size:14px;font-weight:700;padding:10px 16px;letter-spacing:.2px}
+.topbar span{background:#00000055;padding:2px 10px;border-radius:20px;margin-left:8px}
+header{position:sticky;top:0;z-index:50;background:rgba(15,18,48,.92);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff18;color:#fff}
+.nav{max-width:1150px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}
+.logo-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:grid;place-items:center;font-size:24px;box-shadow:0 6px 18px #f59e0b66}
+.logo small{display:block;font-size:11px;font-weight:600;color:#c7d2fe;letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:600;color:#d5d8ff}
+.nav-links a:hover{color:var(--amber)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:900;border-radius:14px;padding:16px 28px;font-size:16px;transition:.2s;cursor:pointer;border:0;line-height:1.2}
+.btn-cta{background:linear-gradient(135deg,#22c55e,#10b981);color:#fff;box-shadow:0 12px 30px #10b98166, inset 0 1px 0 #ffffff55}
+.btn-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 40px #10b98188}
+.btn-amber{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1e1b4b;box-shadow:0 12px 30px #f59e0b66}
+.btn-amber:hover{transform:translateY(-2px)}
+.btn-ghost{background:#ffffff18;color:#fff;border:1px solid #ffffff33}
+.btn-sm{padding:11px 20px;font-size:14px;border-radius:11px}
+.hero{background:radial-gradient(900px 500px at 85% 10%,#6d28d955,transparent),radial-gradient(700px 500px at 10% 20%,#f59e0b33,transparent),linear-gradient(180deg,#0f1230,#1e1b6b 70%,#312e81);color:#fff;position:relative;overflow:hidden}
+.hero-inner{max-width:1150px;margin:0 auto;padding:56px 20px 70px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.badge-pill{display:inline-flex;align-items:center;gap:8px;background:#ffffff14;border:1px solid #ffffff2e;padding:8px 14px;border-radius:100px;font-size:13px;font-weight:700;color:#fde68a}
+.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:18px 0 14px;font-weight:950;letter-spacing:-1px}
+.hero h1 .grad{background:linear-gradient(90deg,#fbbf24,#fb7185,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{color:#d5d8ff;font-size:18px;max-width:520px}
+.hero-checks{display:grid:grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}
+.hero-checks div{background:#ffffff10;border:1px solid #ffffff20;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700}
+.price-hero{display:flex;align-items:end;gap:12px;margin:10px 0 18px}
+.price-old{color:#a5b4fc;text-decoration:line-through;font-size:18px}
+.price-new{font-size:48px;font-weight:950;color:#fbbf24;line-height:1}
+.price-parc{font-size:14px;color:#d5d8ff}
+.hero-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.trust-row{display:flex;gap:18px;margin-top:18px;font-size:13px;color:#c7d2fe;flex-wrap:wrap}
+.trust-row b{color:#fff}
+/* Mockup */
+.mock-wrap{position:relative}
+.mock{border-radius:18px;overflow:hidden;background:#0f172a;border:1px solid #ffffff2c;box-shadow:0 30px 80px #00000088;transform:perspective(1000px) rotateY(-6deg) rotateX(2deg)}
+.mock-top{background:#1e1f4b;display:flex;align-items:center;gap:8px;padding:12px 14px}
+.dot{width:11px;height:11px;border-radius:50%}
+.mock-body{display:grid;grid-template-columns:150px 1fr;background:#f8fafc;color:#0f172a;min-height:360px}
+.mock-side{background:#1e1b4b;color:#c7d2fe;padding:16px 12px;font-size:12px;font-weight:700}
+.mock-side div{padding:9px 10px;border-radius:9px;margin-bottom:6px}
+.mock-side .active{background:#fbbf24;color:#1e1b4b}
+.mock-main{padding:18px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.kpi{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px;text-align:center}
+.kpi b{font-size:18px;display:block}
+.kpi span{font-size:11px;color:#6b7280;font-weight:700;text-transform:uppercase}
+.chart{background:linear-gradient(180deg,#eef2ff,#fff);border:1px solid #e0e7ff;border-radius:12px;padding:12px}
+.bars{display:flex;align-items:end;gap:8px;height:90px;margin-top:10px}
+.bars i{flex:1;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#7c3aed,#4f46e5);display:block;animation:grow 1.6s ease infinite alternate}
+@keyframes grow{from{transform:scaleY(.92)}to{transform:scaleY(1)}}
+.alert{background:#fef3c7;border:1px solid #fcd34d;border-radius:10px;padding:10px 12px;font-size:12px;margin-top:10px;font-weight:700;color:#92400e}
+.float-card{position:absolute;background:#fff;color:#111;border-radius:14px;padding:12px 14px;box-shadow:0 18px 40px #00000055;font-size:13px;font-weight:800;display:flex;gap:10px;align-items:center;animation:float 3.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fc1{top:-18px;right:-8px}
+.fc2{bottom:-18px;left:-10px;animation-delay:1s}
+section{max-width:1150px;margin:0 auto;padding:64px 20px}
+.sec-tag{display:inline-block;background:#e0e7ff;color:#4338ca;font-weight:900;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;border-radius:100px;margin-bottom:12px}
+h2{font-size:clamp(26px,4vw,40px);line-height:1.1;letter-spacing:-.8px;margin-bottom:12px}
+.sec-sub{color:var(--muted);font-size:17px;max-width:680px;margin-bottom:28px}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pain-card{background:var(--card);border-radius:var(--radius);padding:26px;border:1px solid #e5e7eb}
+.pain-card.bad{border-top:6px solid #ef4444}
+.pain-card.good{border-top:6px solid #10b981;background:linear-gradient(180deg,#ecfdf5,#fff)}
+.pain-card h3{margin-bottom:12px;font-size:20px}
+.pain-card li{list-style:none;padding:9px 0;border-bottom:1px dashed #e5e7eb;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.feat{background:#fff;border:1px solid #e7e8ff;border-radius:18px;padding:22px;transition:.2s;position:relative;overflow:hidden}
+.feat:hover{transform:translateY(-5px);box-shadow:0 18px 40px #312e8122;border-color:#a5b4fc}
+.feat-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:26px;margin-bottom:12px}
+.feat h3{font-size:17px;margin-bottom:6px}
+.feat p{font-size:14px;color:var(--muted)}
+.diff{background:linear-gradient(180deg,#0f1230,#1e1b6b);border-radius:26px;color:#fff;padding:40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;position:relative;overflow:hidden}
+.diff::before{content:"";position:absolute;width:500px;height:500px;background:radial-gradient(circle,#7c3aed55,transparent);top:-150px;right:-100px}
+.diff-card{background:#ffffff10;border:1px solid #ffffff22;border-radius:18px;padding:24px;text-align:center;position:relative}
+.diff-card .big{font-size:44px}
+.diff-card h3{color:#fbbf24;margin:8px 0}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 20px}
+.tab{padding:11px 18px;border-radius:100px;background:#fff;border:2px solid #e0e7ff;font-weight:800;font-size:14px;cursor:pointer}
+.tab.active{background:#1e1b4b;color:#fbbf24;border-color:#1e1b4b}
+.tab-panel{display:none;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:28px;animation:fade .3s}
+.tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px; counter-reset:step}
+.step{background:#fff;border-radius:18px;padding:26px;border:1px solid #e5e7eb;text-align:center;position:relative}
+.step-num{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#312e81,#7c3aed);color:#fff;font-weight:950;font-size:22px;display:grid;place-items:center;margin:0 auto 12px}
+.offer{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:3px solid #f59e0b;border-radius:26px;padding:36px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;position:relative;overflow:hidden}
+.offer-badge{position:absolute;top:18px;right:-42px;background:#ef4444;color:#fff;font-weight:900;padding:8px 50px;transform:rotate(35deg);font-size:13px}
+.countdown{display:flex;gap:10px;margin:16px 0}
+.cd{background:#1e1b4b;color:#fff;border-radius:12px;padding:10px;min-width:70px;text-align:center}
+.cd b{font-size:26px;display:block;color:#fbbf24}
+.cd span{font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.price-box{background:#fff;border-radius:18px;padding:26px;text-align:center;border:1px solid #fed7aa;box-shadow:0 20px 50px #f59e0b33}
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.testi{background:#fff;border-radius:16px;padding:20px;border:1px solid #e5e7eb;font-size:14px}
+.stars{color:#f59e0b;font-size:16px;letter-spacing:2px}
+.faq-item{background:#fff;border:1px solid #e5e7eb;border-radius:14px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:18px 20px;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px}
+.faq-a{max-height:0;overflow:hidden;transition:.3s;padding:0 20px;color:var(--muted);font-size:14px}
+.faq-item.open .faq-a{max-height:300px;padding:0 20px 18px}
+.guarantee{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:2px dashed #10b981;border-radius:22px;padding:32px;display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center}
+.seal{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#6ee7b7,#059669);display:grid;place-items:center;color:#fff;font-weight:950;text-align:center;font-size:13px;line-height:1.2;border:5px solid #fff;box-shadow:0 12px 30px #05966955;animation:spin-slow 12s linear infinite}
+.final-cta{background:linear-gradient(180deg,#1e1b4b,#4c1d95);color:#fff;border-radius:26px;padding:48px 32px;text-align:center;position:relative;overflow:hidden}
+.final-cta::after{content:"🎓📚✏️📊";position:absolute;font-size:90px;opacity:.08;top:10px;left:0;right:0}
+footer{background:#0a0c25;color:#a5b4fc;text-align:center;padding:30px 20px;font-size:13px}
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(15,18,48,.96);backdrop-filter:blur(10px);border-top:1px solid #ffffff22;padding:10px 14px;display:none;z-index:60;align-items:center;justify-content:space-between;gap:10px;color:#fff}
+.reveal{opacity:0;transform:translateY(24px);transition:.6s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:960px){
+  .hero-inner,.pain-grid,.offer,.tab-panel.active,.guarantee{grid-template-columns:1fr}
+  .grid3,.grid4,.testis,.steps,.diff{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .mock{transform:none}
+}
+@media(max-width:620px){
+  .grid3,.grid4,.testis,.steps,.diff,.hero-checks{grid-template-columns:1fr}
+  .sticky-cta{display:flex}
+  body{padding-bottom:76px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .mock-body{grid-template-columns:1fr}
+  .mock-side{display:flex;gap:6px;overflow:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🚀 OFERTA DE LANÇAMENTO — de <s>R$ 297</s> por apenas R$ 119,90 <span>⏳ vagas com desconto hoje</span></div>
+
+<header>
+  <div class="nav">
+    <div class="logo"><div class="logo-badge">🎓</div><div>ESCOLA MESTRE<small>Gestão Pedagógica</small></div></div>
+    <nav class="nav-links"><a href="#recursos">Recursos</a><a href="#demo">Demonstração</a><a href="#diferenciais">Diferenciais</a><a href="#preco">Preço</a><a href="#faq">Dúvidas</a></nav>
+    <a class="btn btn-cta btn-sm" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">QUERO O MEU ACESSO →</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge-pill">✅ 100% OFFLINE • SEM MENSALIDADE • PARA WINDOWS</div>
+      <h1>Organize sua escola inteira em <span class="grad">1 clique.</span> Sem nuvem, sem mensalidade.</h1>
+      <p class="sub">O <b style="color:#fbbf24">Escola Mestre</b> gerencia alunos, professores, notas, faltas, horários, planos de aula e eventos — direto no seu computador. Leve, rápido e vitalício.</p>
+      <div class="hero-checks">
+        <div>📊 Dashboard com KPIs em tempo real</div>
+        <div>⚠️ Alerta de risco pedagógico</div>
+        <div>🕒 Detector de conflito de horários</div>
+        <div>💾 Backup em 1 clique (.json/.esm)</div>
+      </div>
+      <div class="price-hero">
+        <div><div class="price-old">R$ 297,00</div><div class="price-new">R$ 119,90</div></div>
+        <div class="price-parc">ou 12x de R$ 9,99<br>⚡ Pagamento único • Uso vitalício</div>
+      </div>
+      <div class="hero-cta-row">
+        <a class="btn btn-cta" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">🎓 QUERO MODERNIZAR MINHA ESCOLA</a>
+        <a class="btn btn-ghost" href="#demo">▶ Ver como funciona</a>
+      </div>
+      <div class="trust-row"><span>🔒 Compra segura</span><span>⚡ <b>Entrega imediata</b> por download</span><span>⭐ Suporte + instruções inclusas</span></div>
+    </div>
+    <div class="mock-wrap">
+      <div class="float-card fc1">⚠️ Risco detectado: 3 alunos com faltas altas</div>
+      <div class="mock">
+        <div class="mock-top"><span class="dot" style="background:#ef4444"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#22c55e"></span><span style="color:#a5b4fc;font-size:12px;font-weight:700;margin-left:8px">🎓 Escola Mestre — Painel de Controle</span></div>
+        <div class="mock-body">
+          <div class="mock-side"><div class="active">📊 Dashboard</div><div>👩‍🏫 Docentes</div><div>🧑‍🎓 Alunos</div><div>🕒 Horários</div><div>📝 Planos</div><div>✅ Tarefas</div><div>🎉 Projetos</div></div>
+          <div class="mock-main">
+            <div class="kpis">
+              <div class="kpi"><b>48</b><span>Docentes</span></div>
+              <div class="kpi"><b>632</b><span>Alunos</span></div>
+              <div class="kpi"><b style="color:#059669">8.4</b><span>Média geral</span></div>
+              <div class="kpi"><b style="color:#7c3aed">94%</b><span>Presença</span></div>
+            </div>
+            <div class="chart"><b style="font-size:13px">📈 Evolução de notas bimestrais</b>
+              <div class="bars"><i style="height:55%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:85%"></i><i style="height:78%"></i><i style="height:96%"></i></div>
+            </div>
+            <div class="alert">🔔 5 boletins atualizados hoje • 2 conflitos de horário evitados</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card fc2">✅ Backup concluído • 632 alunos salvos</div>
+    </div>
+  </div>
+</div>
+
+<section class="reveal">
+  <span class="sec-tag">😩 Você passa por isso?</span>
+  <h2>Gestão no caderno e na planilha está travando sua escola</h2>
+  <p class="sec-sub">Se você perde horas lançando notas, monta horário no papel e descobre faltas tarde demais, o problema não é você. É a falta de sistema.</p>
+  <div class="pain-grid">
+    <div class="pain-card bad"><h3>❌ Sem o Escola Mestre</h3><ul><li>📒 Notas e faltas espalhadas em papéis e WhatsApp</li><li>😵 Horários com professor dobrado na mesma hora</li><li>⏰ Horas perdidas calculando média anual na mão</li><li>📉 Aluno em risco descoberto só no fim do bimestre</li><li>💸 Mensalidades caras de sistemas em nuvem lentos</li></ul></div>
+    <div class="pain-card good"><h3>✅ Com o Escola Mestre</h3><ul><li>⚡ Lançamento rápido de notas com média automática</li><li>🛡️ Sistema avisa na hora se há conflito de sala/professor</li><li>📊 Dashboard mostra tudo: médias, presença, docentes</li><li>🚨 Alerta automático de notas baixas e faltas excessivas</li><li>💰 Pagou uma vez, usou para sempre. Offline e privado.</li></ul></div>
+  </div>
+</section>
+
+<section id="recursos" class="reveal" style="padding-top:0">
+  <span class="sec-tag">🛠️ Tudo em um só lugar</span>
+  <h2>8 módulos completos para sua gestão pedagógica</h2>
+  <p class="sec-sub">Do boletim ao evento cultural. Sem precisar de internet, sem limite de cadastros.</p>
+  <div class="grid4">
+    <div class="feat"><div class="feat-ico" style="background:#e0e7ff">📊</div><h3>Dashboard Inteligente</h3><p>KPIs em tempo real: docentes, alunos, média geral, presença + gráfico bimestral.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#fef3c7">👩‍🏫</div><h3>Gestão de Docentes</h3><p>Cadastro com disciplina, e-mail e carga horária. Controle anti-sobrecarga automático.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#dcfce7">🧑‍🎓</div><h3>Alunos & Boletins</h3><p>Cadastro por turma e matrícula. Notas e faltas com média anual calculada sozinha.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#fce7f3">🕒</div><h3>Grade de Horários</h3><p>Monte aulas por turma no visual. Detector de colisão professor + sala.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#e0e7ff">📝</div><h3>Planos de Aula</h3><p>Tópicos, conteúdos e datas com status: Pendente, Em Andamento, Realizado.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#fef3c7">✅</div><h3>Agenda de Tarefas</h3><p>Provas, correções e reuniões com prioridade Alta / Média / Baixa.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#dcfce7">🎉</div><h3>Projetos & Eventos</h3><p>Gincanas, feiras e interclasse com responsáveis e turmas participantes.</p></div>
+    <div class="feat"><div class="feat-ico" style="background:#fee2e2">💾</div><h3>Backup & Segurança</h3><p>Exporte tudo em .json/.esm em 1 clique. Restaure em outro PC facilmente.</p></div>
+  </div>
+</section>
+
+<section id="demo" class="reveal" style="padding-top:0">
+  <span class="sec-tag">👀 Veja por dentro</span>
+  <h2>Explore como é simples usar</h2>
+  <p class="sec-sub">Clique nas abas e descubra cada tela do sistema.</p>
+  <div class="tabs">
+    <button class="tab active" data-tab="t1">📊 Dashboard</button>
+    <button class="tab" data-tab="t2">🕒 Horários</button>
+    <button class="tab" data-tab="t3">🧑‍🎓 Boletins</button>
+    <button class="tab" data-tab="t4">💾 Backup</button>
+  </div>
+  <div class="tab-panel active" id="t1"><div><h3>Decisões com dados, não achismo</h3><p style="color:#5b5b7a;font-size:15px;margin:10px 0">Média geral, presença, evolução bimestral e alertas de risco pedagógico direto na tela inicial. Ideal para diretores e coordenadores.</p><a class="btn btn-amber btn-sm" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">Quero esse painel →</a></div><div style="background:#eef2ff;border-radius:14px;padding:20px;font-size:14px"><b>📈 Hoje na sua escola (exemplo):</b><br><br>✅ 632 alunos ativos<br>✅ Média geral: <b style="color:#059669">8.4</b><br>✅ Presença: <b style="color:#7c3aed">94%</b><br>⚠️ 3 alunos precisam de atenção</div></div>
+  <div class="tab-panel" id="t2"><div><h3>Nunca mais choque de horário</h3><p style="color:#5b5b7a;font-size:15px;margin:10px 0">Tentou colocar o mesmo professor em duas turmas ao mesmo tempo? O Escola Mestre avisa na hora. Visual por turma, simples de arrastar e montar.</p><a class="btn btn-amber btn-sm" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">Quero sem conflitos →</a></div><div style="background:#fef3c7;border-radius:14px;padding:20px;font-size:14px"><b>🕒 Segunda — 7º Ano A</b><br><br>07:30 Matemática — Prof. Ana<br>08:20 Português — Prof. Carlos<br>⛔ <b style="color:#b91c1c">Bloqueado:</b> Prof. Ana já está no 8º B nesse horário!</div></div>
+  <div class="tab-panel" id="t3"><div><h3>Boletim virtual em segundos</h3><p style="color:#5b5b7a;font-size:15px;margin:10px 0">Lance notas e faltas por disciplina. A média anual sai automática. Cadastro por turma + matrícula, sem burocracia.</p><a class="btn btn-amber btn-sm" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">Quero agilidade →</a></div><div style="background:#ecfdf5;border-radius:14px;padding:20px;font-size:14px"><b>🧑‍🎓 Maria S. — Mat. 2024001</b><br><br>Mat: 8.5 | Port: 9.0 | Cie: 7.8<br>Faltas: 4 • <b>Média: 8.4 ✅ Aprovada</b></div></div>
+  <div class="tab-panel" id="t4"><div><h3>Seus dados, só seus</h3><p style="color:#5b5b7a;font-size:15px;margin:10px 0">100% offline. Exporte o banco completo em 1 clique e leve para outro computador. Função de restaurar modelo de fábrica inclusa.</p><a class="btn btn-amber btn-sm" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">Quero segurança →</a></div><div style="background:#f5f3ff;border-radius:14px;padding:20px;font-size:14px"><b>💾 backup_2026-10-14.esm</b><br><br>✅ 632 alunos • 48 docentes<br>✅ 1.240 planos • 86 eventos<br>⬇️ Exportado em 2 segundos</div></div>
+</section>
+
+<section id="diferenciais" class="reveal" style="padding-top:0">
+  <div class="diff">
+    <div class="diff-card"><div class="big">💰</div><h3>Pagamento único</h3><p style="color:#d5d8ff;font-size:14px">Compre uma vez, use para sempre. Sem mensalidade, sem taxa oculta, sem limite de cadastros.</p></div>
+    <div class="diff-card"><div class="big">🔌</div><h3>100% Offline</h3><p style="color:#d5d8ff;font-size:14px">Funciona sem internet. Perfeito para locais com conexão instável. Privacidade total.</p></div>
+    <div class="diff-card"><div class="big">⚡</div><h3>Super leve</h3><p style="color:#d5d8ff;font-size:14px">Menos de 10MB! Roda liso em Windows 10/11 com apenas 2GB de RAM.</p></div>
+  </div>
+</section>
+
+<section class="reveal" style="padding-top:0">
+  <span class="sec-tag">📦 Como funciona</span>
+  <h2>Comprou, baixou, usou. Em minutos.</h2>
+  <div class="steps" style="margin-top:20px">
+    <div class="step"><div class="step-num">1</div><h3>Clique e finalize</h3><p style="color:#5b5b7a;font-size:14px">Pagamento seguro via checkout. Pix ou cartão. Confirmação rápida.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Baixe o instalador</h3><p style="color:#5b5b7a;font-size:14px">Link de download imediato + instruções simples. Sem servidor complexo.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Gerencie tudo</h3><p style="color:#5b5b7a;font-size:14px">Abra no Windows e cadastre turmas, notas e horários. Pronto!</p></div>
+  </div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;margin-top:16px;font-size:14px;display:flex;gap:14px;flex-wrap:wrap">
+    <span>💻 <b>Requisitos:</b> Windows 10 ou 11</span><span>🧠 2GB RAM</span><span>💾 &lt;10MB disco</span><span>📥 Executável + instruções inclusas</span>
+  </div>
+</section>
+
+<section id="preco" class="reveal" style="padding-top:0">
+  <div class="offer">
+    <div class="offer-badge">-60% HOJE</div>
+    <div>
+      <span class="sec-tag">🎁 Oferta por tempo limitado</span>
+      <h2>Leve o sistema completo por menos que uma pizza por mês</h2>
+      <p style="color:#7c2d12;font-size:15px;margin:8px 0">Sistemas em nuvem cobram <b>R$ 99/mês</b> para sempre (= R$ 1.188/ano). O Escola Mestre é <b>pagamento único</b>.</p>
+      <ul style="list-style:none;margin:14px 0;font-size:15px;font-weight:700">
+        <li>✅ Sistema completo vitalício</li>
+        <li>✅ Cadastros ilimitados</li>
+        <li>✅ Backup + restauração inclusos</li>
+        <li>✅ Instruções de uso simples</li>
+        <li>✅ Entrega imediata por download</li>
+      </ul>
+      <div class="countdown"><div class="cd"><b id="hh">05</b><span>Horas</span></div><div class="cd"><b id="mm">59</b><span>Min</span></div><div class="cd"><b id="ss">59</b><span>Seg</span></div></div>
+      <p style="font-size:13px;color:#92400e">⏳ O desconto expira quando o cronômetro zerar.</p>
+    </div>
+    <div class="price-box">
+      <div style="font-size:13px;font-weight:800;color:#b45309;letter-spacing:1px">ACESSO VITALÍCIO</div>
+      <div style="text-decoration:line-through;color:#9ca3af">R$ 297,00</div>
+      <div style="font-size:56px;font-weight:950;line-height:1">R$ 119<span style="font-size:28px">,90</span></div>
+      <div style="font-size:14px;color:#57534e">ou 12x de R$ 9,99 no cartão</div>
+      <a class="btn btn-cta" style="width:100%;margin:18px 0 10px;font-size:18px" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">🚀 GARANTIR MEU ACESSO AGORA</a>
+      <div style="font-size:13px;color:#57534e">🔒 Checkout seguro Maisfy • ⚡ Liberação imediata<br>💳 Pix • Cartão em até 12x</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" style="padding-top:0">
+  <span class="sec-tag">⭐ Quem usa, aprova</span>
+  <h2>Feito para escolas, cursos e projetos</h2>
+  <div class="testis" style="margin-top:20px">
+    <div class="testi"><div class="stars">★★★★★</div><p>"Montava horário no caderno e sempre dava choque de professor. Com o detector de conflitos, monto a grade da escola toda em uma tarde."</p><b>— Coord. Patrícia M. <span style="color:#6b7280">| Escola particular</span></b></div>
+    <div class="testi"><div class="stars">★★★★★</div><p>"Meu computador é antigo e roda liso. Lançar notas e ver a média na hora economiza meu fim de semana. E sem internet funciona!"</p><b>— Prof. Roberto A. <span style="color:#6b7280">| Curso preparatório</span></b></div>
+    <div class="testi"><div class="stars">★★★★★</div><p>"O alerta de risco pedagógico salvou nosso bimestre. Identificamos 5 alunos com faltas altas antes do conselho. Vale cada centavo."</p><b>— Dir. Sandra L. <span style="color:#6b7280">| Instituto de idiomas</span></b></div>
+  </div>
+</section>
+
+<section class="reveal" style="padding-top:0">
+  <div class="guarantee">
+    <div class="seal">🛡️<br>COMPRA<br>SEGURA</div>
+    <div><h3 style="font-size:22px">Sua compra com proteção</h3><p style="color:#065f46;font-size:15px;margin-top:6px">Você recebe o arquivo executável + instruções logo após a confirmação do pagamento, com download seguro e suporte para instalação. Pagamento processado em ambiente criptografado via Maisfy (Pix e cartão).</p></div>
+  </div>
+</section>
+
+<section id="faq" class="reveal" style="padding-top:0">
+  <span class="sec-tag">❓ Dúvidas frequentes</span>
+  <h2>Perguntas e respostas</h2>
+  <div style="margin-top:18px">
+    <div class="faq-item"><div class="faq-q">Preciso de internet para usar? <span>+</span></div><div class="faq-a">Não. O Escola Mestre é 100% offline. Você só precisa de internet para baixar o instalador uma vez. Depois, tudo roda local no seu Windows.</div></div>
+    <div class="faq-item"><div class="faq-q">É mensalidade? <span>+</span></div><div class="faq-a">Não. Pagamento único de R$ 119,90 com uso vitalício. Sem taxas mensais, sem limite de alunos ou professores.</div></div>
+    <div class="faq-item"><div class="faq-q">Funciona no meu computador? <span>+</span></div><div class="faq-a">Se você tem Windows 10 ou 11, com 2GB de RAM e 10MB livres, funciona. É extremamente leve e abre instantaneamente.</div></div>
+    <div class="faq-item"><div class="faq-q">Como recebo após pagar? <span>+</span></div><div class="faq-a">Após a confirmação do pagamento no checkout Maisfy, você recebe o link de download imediato com o executável + instruções simples de uso.</div></div>
+    <div class="faq-item"><div class="faq-q">Posso usar em mais de um PC? <span>+</span></div><div class="faq-a">Sim. A função de backup/exportação (.json/.esm) permite transferir e restaurar seus dados facilmente em outro computador Windows.</div></div>
+    <div class="faq-item"><div class="faq-q">Serve para cursos e turmas pequenas? <span>+</span></div><div class="faq-a">Sim! Serve para escolas, cursos livres, reforço escolar, idiomas, projetos sociais e qualquer turma que precise de controle de notas, presença e horários.</div></div>
+  </div>
+</section>
+
+<section class="reveal" style="padding-top:0">
+  <div class="final-cta">
+    <h2 style="color:#fff">🚀 Modernize sua gestão hoje mesmo</h2>
+    <p style="color:#d5d8ff;max-width:560px;margin:10px auto 22px">Junte-se a gestores que trocaram o caderno pelo sistema. Pagamento único, entrega imediata, uso para sempre.</p>
+    <a class="btn btn-amber" style="font-size:19px;padding:18px 40px" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">🎓 QUERO O ESCOLA MESTRE POR R$ 119,90</a>
+    <p style="margin-top:14px;font-size:13px;color:#c7d2fe">⚡ Download imediato • 🔒 Checkout seguro Maisfy • 💳 12x R$ 9,99</p>
+  </div>
+</section>
+
+<footer>🎓 <b style="color:#fff">Escola Mestre</b> — Sistema Completo para Gestão Pedagógica (Windows)<br>Pagamento único • 100% offline • Suporte via checkout<br><br><span style="font-size:12px">© 2026 Escola Mestre. Todos os direitos reservados. Preços e condições podem mudar sem aviso.</span></footer>
+
+<div class="sticky-cta">
+  <div><s style="color:#a5b4fc;font-size:12px">R$ 297</s><br><b style="color:#fbbf24;font-size:20px">R$ 119,90</b></div>
+  <a class="btn btn-cta btn-sm" style="flex:1" href="https://shop.maisfy.com.br/v2/checkout/Udqi1f92/Ps29e967">GARANTIR AGORA →</a>
+</div>
+
+<script>
+// Countdown persistente (5h59m)
+(function(){
+  var total = 5*3600 + 59*60 + 59;
+  function tick(){
+    if(total<=0) total = 5*3600+59*60+59;
+    total--;
+    var h = String(Math.floor(total/3600)).padStart(2,'0');
+    var m = String(Math.floor(total%3600/60)).padStart(2,'0');
+    var s = String(total%60).padStart(2,'0');
+    document.getElementById('hh').textContent=h;
+    document.getElementById('mm').textContent=m;
+    document.getElementById('ss').textContent=s;
+  }
+  setInterval(tick,1000);
+})();
+// Tabs
+document.querySelectorAll('.tab').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+// FAQ
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item = q.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+// Reveal on scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
